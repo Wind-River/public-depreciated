@@ -1,0 +1,31 @@
+<h4>Transaction Blocks [{{blocks | length}}]</h4>
+<hr>
+
+<table cellspacing="0">
+	<thead>
+		<tr>
+			<td class="empty-header"></td>
+			<td>Block Address</td>
+			<td>Type</td>
+			<td>Size</td>
+			<td>Payload Data</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for block in blocks %}
+			<tr>
+				<td class="seperator-row" colspan="6">
+			</tr>
+			<tr>
+				<td class="chain-graphic-col"></td></td>
+				<td>{{block["address"][-30:]}}</td>
+				<td>{{block["type"]}}</td>
+				<td>{{block["size"]}}</td>
+				<td><div class="payload-data noselect" data-toggle="popover" data-content="{{block["data"]}}"  title="Payload Data" data-placement="left">View Data</div></td>
+			</tr>
+
+		{% endfor %}
+
+	</tbody>
+
+</table>

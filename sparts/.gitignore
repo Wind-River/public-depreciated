@@ -1,0 +1,44 @@
+*.py[cod]
+__pycache__/
+*$py.class
+
+<<<<<<< HEAD
+apps/catalog/.gitignore
+
+## conductor
+=======
+# Flask
+instance/
+.webassets-cache
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+## Conductor
+>>>>>>> 91f646924891425a4cd0a5aba4ecbccad7b71bd5
+conductor/test/*
+
+## This file will be automatically created the first time the conductor runs.
+conductor/data/db/conductor_data.db
+
+## This file is automatically created when built on windows
+conductor/conductor.exe
+
+# catalog and dashboard app
+apps/catalog/config.py
+apps/blockchain-dash/config.py

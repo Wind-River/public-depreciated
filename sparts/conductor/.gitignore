@@ -1,0 +1,13 @@
+*.py[cod]
+__pycache__/
+blockchain-dash/config.py
+
+apps/catalog/.gitignore
+
+## conductor
+conductor/test/*
+## This file will be automatically create the first time the conductor runs.
+conductor/data/db/conductor_data.db  
+## This file is automatically create when built on windows
+conductor/conductor.exe
+

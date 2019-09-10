@@ -1,0 +1,119 @@
+<div class="blockchain-dashport">
+
+    <div class="blockchain-dash-title">Supply Chain Network Status</div>
+
+    <div class="blockchain-dash-left">
+        <div class="blockchain-dash-info">
+            <strong>Ledger Uptime:</strong> {{uptime}}
+        </div>
+
+        <div class="blockchain-dash-info">
+            <strong>Ledger API Address:</strong>
+            <span class="ledger-api-address">{{ledger_api_address}}</span>
+        </div>
+
+
+        <div class="blockchain-dash-info">
+            <strong>Platform:</strong> <span id="hyperledger-version">
+            Retrieving...</span>
+        </div>
+    </div>
+
+    <div class="blockchain-dash-right">
+        <div class="blockchain-dash-info">
+            <strong>Nodes:</strong> {{nodes|length}} nodes registered on the network
+        </div>
+
+
+        <div class="blockchain-dash-info">
+            <strong>Components:</strong> <span id="envelope-count">{{envelope_count}}</span>
+            envelopes, <span id="part-count">{{part_count}}</span> parts, and
+            <span id="supplier-count">{{supplier_count}}</span> suppliers
+        </div>
+    </div>
+
+</div>
+
+<h3>Blockchain Nodes</h3>
+<hr>
+
+{% if not nodes %}
+    There are no nodes registered.
+{% else %}
+<div class="blockchain-view-section blockchain-view-section-nodes">
+
+{% for node in nodes %}
+
+    <div class="blockchain-node" uuid="{{node['uuid']}}">
+
+        <div class="blockchain-node-image">
+        </div>
+
+        <div class="blockchain-node-name">
+            <span>{{node["label"]}}</span>
+        </div>
+
+        <div class="blockchain-node-status" uuid="{{node['uuid']}}">
+            <span class="node-status-text">Status: </span>
+            <span class="blockchain-nodes-preload"></span>
+            <span class="node-status-value">Retrieving...</span>
+        </div>
+
+        <div class="blockchain-node-popup-content">
+            <div><strong>Node {{node["short_id"]}} ({{node["label"]}})</strong></div>
+            <div><strong>Ledger service URL</strong>: {{node["api_address"]}}</div>
+            <div><strong>UUID</strong>: {{node["uuid"]}}</div>
+            <div><strong>Description</strong>: {{node["description"]}}</div>
+            <div class="node-blocks-table-container">
+                <div class="node-blocks-table-preload">
+                    <h4>Transaction Blocks</h4>
+                    <hr>
+                    <div class="blockchain-components-preload"></div>
+                </div>
+                <div class="node-blocks-table"></div>
+            </div>
+        </div>
+
+    </div>
+
+{% endfor %}
+</div>
+{% endif %}
+
+<h3>Applications</h3>
+<hr>
+
+{% if not apps %}
+    There are no apps registered.
+{% else %}
+
+<div class="blockchain-view-section blockchain-view-section-applications">
+    {% for app in apps %}
+
+        <div class="blockchain-app">
+            <div class="blockchain-app-icon"></div>
+
+            <div class="blockchain-app-name">
+            {{app["label"]}}
+            </div>
+
+            <div class="blockchain-app-popup-content">
+                <div><strong>Name</strong>: {{app["name"]}}</div>
+                <div><strong>UUID</strong>: {{app["uuid"]}}</div>
+                <div><strong>App Type</strong>: {{app["app_type"]}}</div>
+                <div><strong>API service</strong>: {{app["api_address"]}}</div>
+                <div><strong>Description</strong>: {{app["description"]}}</div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<h3>Suppliers &amp; Parts</h3>
+<div class="blockchain-queried-ledger">Queried from the ledger</div>
+<hr>
+
+<div id="blockchain-components">
+<div class="blockchain-components-preload"></div>
+</div>
